@@ -1,5 +1,6 @@
 import QtQuick.Window
 import QtQuick.Layouts
+import QtQuick.Controls
 
 Window {
     height: 480
@@ -33,10 +34,31 @@ Window {
                 }
             }
         }
+
         Rectangle {
             Layout.fillWidth: true
+            height: 2
+            color: Qt.color('gray')
+        }
+
+        TextArea {
+            Layout.fillWidth: true
             Layout.preferredHeight: 1 / 3 * parent.height
-            color: 'green'
+
+            Keys.onPressed: function (event) {
+                if (event.modifiers !== Qt.NoModifier) {
+                    return;
+                }
+
+                switch (event.key) {
+                    case Qt.Key_Return:
+                    case Qt.Key_Enter:
+                        event.accepted = true
+                        clear()
+                        break;
+                    default:;
+                }
+            }
         }
     }
 }
