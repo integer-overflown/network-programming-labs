@@ -12,16 +12,16 @@ class AppContext : public QObject
 {
   Q_OBJECT
   Q_PROPERTY(app::MessagesModel* messagesModel READ messagesModel CONSTANT)
-  Q_PROPERTY(app::Client *client READ client CONSTANT)
+  Q_PROPERTY(app::Client* client READ client CONSTANT)
 
 public:
   app::MessagesModel* messagesModel() { return &model_; }
 
-  app::Client *client() { return &client_; }
+  app::Client* client() { return &client_; }
 
 private:
   app::MessagesModel model_;
-  app::Client client_{&model_};
+  app::Client client_{ &model_ };
 };
 
 }

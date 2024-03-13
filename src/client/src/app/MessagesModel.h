@@ -4,8 +4,8 @@
 #include <vector>
 
 #include <QAbstractListModel>
-#include <QVariant>
 #include <QHash>
+#include <QVariant>
 
 namespace app {
 
@@ -36,4 +36,4 @@ private:
 
 }
 
-#endif //MESSAGESMODEL_H
+#endif // MESSAGESMODEL_H
