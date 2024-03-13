@@ -84,7 +84,7 @@ struct GrepNumbersResponse {
 async fn root(
     axum::Json(json): axum::Json<GrepNumbersRequest>,
 ) -> Result<AppJson<GrepNumbersResponse>, AppError> {
-    let re = Regex::new(r"\b([0-9]+)\b").unwrap();
+    let re = Regex::new(r"([0-9]+)").unwrap();
     let mut numbers = Vec::new();
 
     for (_, [num]) in re.captures_iter(&json.input).map(|c| c.extract()) {
