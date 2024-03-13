@@ -1,12 +1,13 @@
-module;
+#ifndef MESSAGESMODEL_H
+#define MESSAGESMODEL_H
 
 #include <vector>
 
 #include <QAbstractListModel>
+#include <QVariant>
+#include <QHash>
 
-export module app;
-
-export namespace app {
+namespace app {
 
 class MessagesModel : public QAbstractListModel
 {
@@ -32,4 +33,7 @@ public:
 private:
   std::vector<Message> messages_;
 };
+
 }
+
+#endif //MESSAGESMODEL_H

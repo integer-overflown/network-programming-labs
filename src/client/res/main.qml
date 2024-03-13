@@ -19,18 +19,26 @@ Window {
             delegate: RowLayout {
                 spacing: 8
 
-                Text {
-                    height: 64
-                    horizontalAlignment: Text.AlignHCenter
-                    text: outgoing ? ">" : "<"
-                    verticalAlignment: Text.AlignVCenter
-                    width: 64
+                Rectangle {
+                    Layout.fillHeight: true
+                    width: 24
+                    color: outgoing ? Qt.color('magenta') : Qt.color('blue')
+
+                    Text {
+                        anchors.fill: parent
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        text: outgoing ? ">" : "<"
+                    }
                 }
 
                 Text {
                     Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignVCenter
                     text: messageText
                     elide: Text.ElideRight
+                    topPadding: 4
+                    bottomPadding: 4
                 }
             }
         }
@@ -54,6 +62,7 @@ Window {
                     case Qt.Key_Return:
                     case Qt.Key_Enter:
                         event.accepted = true
+                        client.sendMessage(text)
                         clear()
                         break;
                     default:;

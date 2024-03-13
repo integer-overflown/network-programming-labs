@@ -1,9 +1,4 @@
-module;
-
-#include <QVariant>
-#include <utility>
-
-module app;
+#include "MessagesModel.h"
 
 namespace app {
 
@@ -42,5 +37,4 @@ MessagesModel::roleNames() const
 {
   return { { IsOutgoing, "outgoing" }, { MessageText, "messageText" } };
 }
-
 }

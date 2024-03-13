@@ -3,7 +3,8 @@
 #include <QQmlContext>
 #include <QUrl>
 
-import app;
+#include "app/Client.h"
+#include "app/MessagesModel.h"
 
 namespace {
 
@@ -11,22 +12,16 @@ class AppContext : public QObject
 {
   Q_OBJECT
   Q_PROPERTY(app::MessagesModel* messagesModel READ messagesModel CONSTANT)
+  Q_PROPERTY(app::Client *client READ client CONSTANT)
 
 public:
-  AppContext()
-  {
-    model_.addMessage({ true, "hey" });
-    model_.addMessage({ false, "hello" });
-    model_.addMessage({ false,
-                        "longlonglonglonglonglonglonglonglonglonglonglonglonglo"
-                        "nglonglonglonglonglonglonglonglonglonglonglonglonglong"
-                        "longlonglonglonglonglonglonglong" });
-  }
-
   app::MessagesModel* messagesModel() { return &model_; }
+
+  app::Client *client() { return &client_; }
 
 private:
   app::MessagesModel model_;
+  app::Client client_{&model_};
 };
 
 }
