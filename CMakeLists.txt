@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(network_programming_lab_1)
+project(network_programming_labs)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
