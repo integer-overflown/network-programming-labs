@@ -4,8 +4,9 @@ use std::net::{Ipv4Addr, TcpListener, TcpStream};
 use tracing::{debug, info, warn};
 
 mod error;
+mod udp_server;
 
-fn handle_connection(mut connection: TcpStream) -> Result<(), error::ConnectionError> {
+fn handle_connection(mut connection: TcpStream) -> Result<(), error::SocketError> {
     debug!(
         "Handling new connection, peer addr: {:?}",
         connection.peer_addr()
