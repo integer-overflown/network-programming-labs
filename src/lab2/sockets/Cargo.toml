@@ -2,5 +2,6 @@
 
 resolver = "2"
 members = [
-    "tcp_server"
+    "tcp_server",
+    "udp_server"
 ]
