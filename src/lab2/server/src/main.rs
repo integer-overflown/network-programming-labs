@@ -6,6 +6,11 @@ use tracing::{debug, info, warn};
 mod error;
 
 fn handle_connection(mut connection: TcpStream) -> Result<(), error::ConnectionError> {
+    debug!(
+        "Handling new connection, peer addr: {:?}",
+        connection.peer_addr()
+    );
+
     let mut message = Vec::new();
     connection.read_to_end(&mut message)?;
 
@@ -22,8 +27,6 @@ fn main() {
     info!("Listening on {}", listener.local_addr().unwrap());
 
     for stream in listener.incoming() {
-        info!("Handling new connection");
-
         let Err(err) = stream.map(handle_connection) else {
             continue;
         };
