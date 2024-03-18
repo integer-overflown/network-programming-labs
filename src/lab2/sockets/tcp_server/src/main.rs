@@ -5,7 +5,7 @@ use tracing::{debug, info, warn};
 
 mod error;
 
-fn handle_connection(mut connection: TcpStream) -> Result<(), error::SocketError> {
+fn handle_connection(mut connection: TcpStream) -> Result<(), error::ConnectionError> {
     debug!(
         "Handling new connection, peer addr: {:?}",
         connection.peer_addr()
