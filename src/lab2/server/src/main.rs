@@ -1,6 +1,6 @@
 use std::error::Error;
 use std::io::Read;
-use std::net::{TcpListener, TcpStream};
+use std::net::{Ipv4Addr, TcpListener, TcpStream};
 use tracing::{debug, info, warn};
 
 mod error;
@@ -23,7 +23,7 @@ fn handle_connection(mut connection: TcpStream) -> Result<(), error::ConnectionE
 fn main() {
     tracing_subscriber::fmt::init();
 
-    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+    let listener = TcpListener::bind((Ipv4Addr::UNSPECIFIED, 7878)).unwrap();
     info!("Listening on {}", listener.local_addr().unwrap());
 
     for stream in listener.incoming() {
