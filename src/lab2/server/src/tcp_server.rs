@@ -3,8 +3,7 @@ use std::io::Read;
 use std::net::{Ipv4Addr, TcpListener, TcpStream};
 use tracing::{debug, info, warn};
 
-mod error;
-mod udp_server;
+use lab2_sockets::error;
 
 fn handle_connection(mut connection: TcpStream) -> Result<(), error::SocketError> {
     debug!(
