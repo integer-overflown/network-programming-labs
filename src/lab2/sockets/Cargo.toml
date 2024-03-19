@@ -1,7 +1,7 @@
 [workspace]
 
 resolver = "2"
-members = [
+members = ["server_utils",
     "task",
     "tcp_server",
     "udp_server"

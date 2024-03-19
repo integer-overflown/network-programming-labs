@@ -1,12 +1,10 @@
 [package]
-name = "tcp_server"
+name = "server_utils"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tracing = "0.1"
-tracing-subscriber = "0.3.18"
 task = { path = "../task" }
-server_utils = { path = "../server_utils" }
+tracing = "0.1.40"
