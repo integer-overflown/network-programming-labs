@@ -44,7 +44,7 @@ pub fn env_config() -> Result<Config, CliError> {
     Ok(Config::new(num))
 }
 
-pub type RunFn = fn() -> Result<(), CliError>;
+pub type RunFn = fn() -> Result<(), Box<dyn Error>>;
 
 pub fn exec(fun: RunFn) {
     let Err(e) = fun() else {

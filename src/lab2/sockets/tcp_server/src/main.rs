@@ -1,7 +1,4 @@
-use server_utils::{
-    cli::{self, CliError},
-    message,
-};
+use server_utils::{cli, message};
 use std::error::Error;
 
 use std::io::Write;
@@ -32,7 +29,7 @@ fn handle_connection(
     Ok(())
 }
 
-fn run() -> Result<(), CliError> {
+fn run() -> Result<(), Box<dyn Error>> {
     let config = cli::env_config()?;
 
     let listener = TcpListener::bind((Ipv4Addr::UNSPECIFIED, 7878)).unwrap();
