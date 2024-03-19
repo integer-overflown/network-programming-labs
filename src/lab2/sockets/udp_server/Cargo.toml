@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 tracing = "0.1"
 tracing-subscriber = "0.3.18"
+server_utils = { path = "../server_utils" }
+task = { path = "../task" }

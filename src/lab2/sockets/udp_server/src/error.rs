@@ -4,7 +4,6 @@ use std::{error, io};
 #[derive(Debug)]
 pub enum SocketError {
     ReadFailed(io::Error),
-    MessageTooShort { actual: usize, minimal: usize },
     UnexpectedEof { expected_len: usize, actual: usize },
 }
 
@@ -12,13 +11,6 @@ impl Display for SocketError {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
             SocketError::ReadFailed(_) => write!(f, "Failed to read from socket"),
-            SocketError::MessageTooShort { actual, minimal } => {
-                write!(
-                    f,
-                    "Message too short: minimal size is {} bytes, got {} bytes",
-                    minimal, actual
-                )
-            }
             SocketError::UnexpectedEof {
                 expected_len,
                 actual,
