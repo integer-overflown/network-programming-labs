@@ -2,6 +2,7 @@
 
 resolver = "2"
 members = [
+    "task",
     "tcp_server",
     "udp_server"
 ]
