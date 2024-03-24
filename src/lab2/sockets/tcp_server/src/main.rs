@@ -2,7 +2,7 @@ use server_utils::{cli, message};
 use std::error::Error;
 
 use std::io::Write;
-use std::net::{Ipv4Addr, Shutdown, TcpListener, TcpStream};
+use std::net::{Ipv4Addr, TcpListener, TcpStream};
 
 use task::Config;
 use tracing::{debug, info, warn};
@@ -24,7 +24,6 @@ fn handle_connection(
     debug!("Got {input}, sending {res}");
 
     connection.write_all(&res.to_be_bytes())?;
-    connection.shutdown(Shutdown::Both)?;
 
     Ok(())
 }
